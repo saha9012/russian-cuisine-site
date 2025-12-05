@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>О нас - Русская кухня</title>
+<link rel="stylesheet" href="assets/styles/style.css">
+<script defer src="assets/scripts/theme-switch.js"></script>
+</head>
+<script>
+document.getElementById("themeToggle").onclick = () => {
+    document.body.classList.toggle("theme-dark");
+    document.body.classList.toggle("theme-light");
+};
+</script>
+
+<body class="theme-light">
+
+<header>
+    <nav>
+        <a href="index.html">Главная</a>
+        <a href="recipes.html">Рецепты</a>
+        <a href="about.html" class="active">О нас</a>
+        <a href="history.html">История</a>
+    </nav>
+</header>
+
+<main class="container">
+
+    <!-- Hero-блок -->
+<div class="hero-about">
+    <div class="hero-content">
+        <h1>О нашем сайте</h1>
+        <p>Сайт про настоящую русскую кухню: рецепты, советы, традиции</p>
+    </div>
+</div>
+
+
+
+
+    <!-- Текстовые блоки -->
+    <div class="text-block">
+        <h2>Наш сайт</h2>
+        <p>Мы собираем проверенные рецепты, чтобы каждый мог готовить вкусно и наслаждаться русской кухней дома. Здесь вы найдете рецепты, советы по приготовлению, а также информацию о традиционных продуктах.</p>
+    </div>
+
+    <div class="text-block">
+        <h2>Наша миссия</h2>
+        <p>Сохранение традиций и вкусов русской кухни, чтобы новые поколения могли наслаждаться аутентичными блюдами. Мы хотим, чтобы каждый рецепт был удобен, красив и вдохновлял на кулинарные подвиги.</p>
+    </div>
+
+</main>
+
+</body>
+</html>
