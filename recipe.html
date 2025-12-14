@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Рецепт - Русская кухня</title>
+    <!-- ПОДКЛЮЧАЕМ ОСНОВНЫЕ СТИЛИ -->
     <link rel="stylesheet" href="assets/styles/style.css">
-    <script defer src="assets/scripts/recipePage.js"></script>
 </head>
 <body class="theme-orange">
 
@@ -37,5 +37,14 @@
         <a href="recipes.html" class="btn">Назад к рецептам</a>
     </main>
 
+    <!-- ВАЖНО: правильный порядок скриптов -->
+    <!-- 1. Сначала скрипт волны текста (он нужен для recipePage.js) -->
+    <script src="assets/scripts/text-wave.js"></script>
+    
+    <!-- 2. Потом скрипт страницы рецепта -->
+    <script src="assets/scripts/recipePage.js"></script>
+    
+    <!-- 3. В конце скрипт переключения тем -->
+    <script src="assets/scripts/theme-switch.js"></script>
 </body>
 </html>

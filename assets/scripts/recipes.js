@@ -1,3 +1,13 @@
+// Функция для иконок сложности
+function getDifficultyIcon(difficulty) {
+    switch(difficulty) {
+        case 'Лёгкая': return '🥗';
+        case 'Средняя': return '🍳';
+        case 'Сложная': return '🔥';
+        default: return '🍽️';
+    }
+}
+
 async function loadRecipes() {
     const container = document.getElementById("recipes-container");
     container.innerHTML = ''; // очистим контейнер перед загрузкой
@@ -16,8 +26,11 @@ async function loadRecipes() {
                 </div>
                 <div class="info">
                     <h3>${r.title}</h3>
-                    <p>⏱ ${r.time} | 🔥 ${r.difficulty}</p>
-                    <a class="btn" href="recipe.html?id=${r.id}">Перейти</a>
+                    <p>⏱ ${r.time} | ${getDifficultyIcon(r.difficulty)} ${r.difficulty}</p>
+                    <a class="btn" href="recipe.html?id=${r.id}" 
+                    style="background: #ff9c47 !important; color: white !important; padding: 10px 20px !important; border-radius: 8px !important; display: inline-block !important; text-decoration: none !important;">
+                        Перейти
+                    </a>
                 </div>
             `;
 

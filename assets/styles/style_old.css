@@ -1,0 +1,607 @@
+/* ===========================
+   Base Reset & Variables
+   =========================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+
+:root {
+    --transition: 0.35s ease;
+
+    /* LIGHT THEME */
+    --bg-light: linear-gradient(160deg, #fff7ed, #ffe9d6);
+    --card-light: #fff6e8;
+    --text-light: #5c3a21;
+    --accent-light: #d35400;
+    --shadow-light: rgba(0,0,0,0.15);
+
+    /* DARK THEME */
+    --bg-dark: linear-gradient(160deg, #0f0f15, #1b1b25);
+    --card-dark: #181820;
+    --text-dark: #e6e6e6;
+    --accent-dark: #a38aff;
+    --shadow-dark: rgba(0,0,0,0.55);
+
+    /* ORANGE THEME */
+    --bg-orange: linear-gradient(160deg, #3b1f0f, #6a3c0d);
+    --card-orange: #261a0b;
+    --text-orange: #f2e7d3;
+    --accent-orange: #ff9c47;
+    --shadow-orange: rgba(0,0,0,0.5);
+
+    /* GOLD THEME */
+    --bg-gold: linear-gradient(160deg, #463b12, #8a6f1a);
+    --card-gold: #2f260d;
+    --text-gold: #fff2c7;
+    --accent-gold: #ffd447;
+    --shadow-gold: rgba(0,0,0,0.55);
+
+    /* BLUE THEME */
+    --bg-blue: linear-gradient(160deg, #0d1a2f, #1e3a5f);
+    --card-blue: #132335;
+    --text-blue: #d6eaff;
+    --accent-blue: #4aa8ff;
+    --shadow-blue: rgba(0,0,0,0.55);
+
+    /* Warm nav text for wood */
+    --text-warm: #5c3a21;
+}
+
+/* ===========================
+   Body & Themes
+   =========================== */
+body {
+    background: var(--bg-orange);
+    color: var(--text-orange);
+    transition: background var(--transition), color var(--transition);
+    min-height: 100vh;
+}
+
+/* Themes */
+body.theme-light { background: var(--bg-light); color: var(--text-light); }
+body.theme-dark { background: var(--bg-dark); color: var(--text-dark); }
+body.theme-orange { background: var(--bg-orange); color: var(--text-orange); }
+body.theme-gold { background: var(--bg-gold); color: var(--text-gold); }
+body.theme-blue { background: var(--bg-blue); color: var(--text-blue); }
+
+/* ===========================
+   Header & Navigation
+   =========================== */
+header {
+    width: 100%;
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    background: transparent;
+    position: relative;
+    z-index: 10;
+}
+
+nav {
+    display: flex;
+    gap: 30px;
+    font-weight: 600;
+}
+
+nav a {
+    position: relative;
+    padding: 8px 18px;
+    text-decoration: none;
+    color: var(--text-warm);
+    font-weight: 700;
+    transition: all 0.3s ease;
+    border: 3px solid transparent;
+    border-radius: 8px;
+    background-clip: padding-box;
+}
+
+nav a::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    z-index: -1;
+    border-radius: 10px;
+    background: url('../img/wood-texture.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    box-shadow: inset 0 0 60px rgba(255,255,255,0.15);
+    animation: woodPulse 10s ease infinite;
+}
+
+@keyframes woodPulse {
+    0% { background-position: 0% 0%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 100%; }
+}
+
+nav a:hover {
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+/* ===========================
+   Theme Switch Button
+   =========================== */
+.theme-switch {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    background: var(--accent-orange);
+    color: #fff;
+    cursor: pointer;
+    font-weight: bold;
+    z-index: 999;
+    box-shadow: 0 4px 12px var(--shadow-orange);
+    transition: background var(--transition), box-shadow var(--transition);
+}
+
+body.theme-light .theme-switch { background: var(--accent-light); box-shadow: 0 4px 12px var(--shadow-light); }
+body.theme-dark .theme-switch { background: var(--accent-dark); box-shadow: 0 4px 12px var(--shadow-dark); }
+body.theme-orange .theme-switch { background: var(--accent-orange); box-shadow: 0 4px 12px var(--shadow-orange); }
+body.theme-gold .theme-switch { background: var(--accent-gold); box-shadow: 0 4px 12px var(--shadow-gold); }
+body.theme-blue .theme-switch { background: var(--accent-blue); box-shadow: 0 4px 12px var(--shadow-blue); }
+
+.theme-switch:hover {
+    filter: brightness(1.2);
+}
+
+/* ===========================
+   Container & Sections
+   =========================== */
+.container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+h1,h2,h3 {
+    margin-bottom: 20px;
+    font-weight: 700;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+/* ===========================
+   Recipe Cards
+   =========================== */
+.recipe-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.recipe-card {
+    background: var(--card-orange);
+    color: var(--text-orange);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 14px var(--shadow-orange);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+}
+
+body.theme-light .recipe-card { background: var(--card-light); color: var(--text-light); box-shadow: 0 6px 20px var(--shadow-light); }
+body.theme-dark .recipe-card { background: var(--card-dark); color: var(--text-dark); box-shadow: 0 6px 20px var(--shadow-dark); }
+body.theme-gold .recipe-card { background: var(--card-gold); color: var(--text-gold); box-shadow: 0 6px 20px var(--shadow-gold); }
+body.theme-blue .recipe-card { background: var(--card-blue); color: var(--text-blue); box-shadow: 0 6px 20px var(--shadow-blue); }
+
+.recipe-card:hover {
+    transform: translateY(-8px) rotateX(2deg);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+}
+
+.recipe-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    transition: transform var(--transition);
+}
+
+.recipe-card:hover img {
+    transform: scale(1.05);
+}
+
+.recipe-card .info {
+    padding: 16px;
+}
+
+/* ===========================
+   Text Blocks
+   =========================== */
+.text-block {
+    line-height: 1.65;
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+/* ===========================
+   Buttons
+   =========================== */
+.btn {
+    display: inline-block;
+    padding: 12px 18px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #fff;
+    background: var(--accent-orange);
+    font-weight: 600;
+    box-shadow: 0 4px 12px var(--shadow-orange);
+    transition: all var(--transition);
+}
+
+body.theme-light .btn { background: var(--accent-light); box-shadow: 0 4px 12px var(--shadow-light); }
+body.theme-dark .btn { background: var(--accent-dark); box-shadow: 0 4px 12px var(--shadow-dark); }
+body.theme-gold .btn { background: var(--accent-gold); box-shadow: 0 4px 12px var(--shadow-gold); }
+body.theme-blue .btn { background: var(--accent-blue); box-shadow: 0 4px 12px var(--shadow-blue); }
+
+.btn:hover { filter: brightness(1.2) translateY(-2px); }
+
+/* ===========================
+   Footer
+   =========================== */
+footer {
+    background: var(--card-orange);
+    padding: 30px 0;
+    text-align: center;
+    box-shadow: 0 -6px 20px rgba(0,0,0,0.2);
+    position: relative;
+    border-top: 10px solid #a97c50;
+    margin-top: 60px;
+}
+
+body.theme-light footer { background: var(--card-light); }
+body.theme-dark footer { background: var(--card-dark); }
+body.theme-gold footer { background: var(--card-gold); }
+body.theme-blue footer { background: var(--card-blue); }
+
+footer::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 0;
+    width: 100%;
+    height: 14px;
+    background: url('../img/wood-texture-footer.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    box-shadow: inset 0 0 20px rgba(255,255,255,0.2);
+}
+
+
+
+/* ===========================
+   Responsive
+   =========================== */
+@media (max-width: 768px) {
+    nav { flex-direction: column; gap: 15px; align-items: center; }
+    .recipe-grid { grid-template-columns: 1fr; }
+    .recipe-card img { height: 220px; }
+    h1 { font-size: 28px; }
+}
+/* ===========================
+   Hero: wooden table + dishes
+   =========================== */
+
+.hero-banner {
+    position: relative;
+    width: 100%;
+    min-height: 420px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+
+/* сам фон-изображение (подставь свою картинку в JS/HTML указанный путь) */
+.hero-image {
+    position: absolute;
+    inset: 0;
+    background-image: url('../img/hero.jpg'); /* <- путь к твоему файлу */
+    background-size: cover;
+    background-position: center;
+    transform: translateZ(0);
+    transition: transform 0.6s cubic-bezier(.2,.9,.2,1);
+    will-change: transform, background-position;
+    filter: saturate(1.05) contrast(1.02);
+}
+
+/* мягкий overlay, чтобы текст читался на любой части фото */
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(14,9,6,0.30) 0%, rgba(14,9,6,0.15) 40%, rgba(255,255,255,0.03) 100%);
+    mix-blend-mode: multiply;
+    pointer-events: none;
+}
+
+/* контент поверх hero */
+.hero-content {
+    position: relative;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    min-height: 320px;
+}
+
+/* текстовый блок */
+.hero-text {
+    max-width: 760px;
+    color: var(--text-orange); /* темы будут менять цвет через body.theme-* */
+    text-shadow: 0 6px 20px rgba(0,0,0,0.35);
+    padding: 36px;
+    backdrop-filter: blur(0.4px);
+}
+
+/* заголовок */
+.hero-text h1 {
+    font-size: clamp(28px, 4.2vw, 44px);
+    line-height: 1.05;
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+}
+
+/* подзаголовок */
+.hero-text .lead {
+    font-size: clamp(14px, 1.6vw, 18px);
+    margin-bottom: 18px;
+    opacity: 0.95;
+}
+
+/* кнопки */
+.hero-cta {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+/* вариант прозрачной кнопки */
+.btn-outline {
+    background: transparent;
+    color: inherit;
+    border: 2px solid rgba(255,255,255,0.12);
+    box-shadow: none;
+}
+.btn-outline:hover {
+    background: rgba(255,255,255,0.06);
+}
+
+/* theme-aware tweaks: если theme-light или theme-dark, подкорректируем overlay / тексты */
+body.theme-light .hero-overlay {
+    background: linear-gradient(180deg, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0.18) 40%, rgba(0,0,0,0.02) 100%);
+}
+body.theme-light .hero-text { color: var(--text-light); text-shadow: 0 4px 14px rgba(0,0,0,0.08); }
+body.theme-dark .hero-overlay {
+    background: linear-gradient(180deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.25) 40%, rgba(0,0,0,0.05) 100%);
+}
+body.theme-dark .hero-text { color: var(--text-dark); text-shadow: 0 8px 28px rgba(0,0,0,0.5); }
+
+/* тонкая декоративная рамка-обводка в стиле дерева (внешний контур) */
+.hero-banner::after {
+    content: '';
+    position: absolute;
+    inset: 8px;
+    border-radius: 18px;
+    pointer-events: none;
+    border: 6px solid rgba(193,150,106,0.12); /* лёгкая деревянная рамка */
+    box-shadow: inset 0 6px 30px rgba(255,255,255,0.02);
+}
+.hero-wrapper {
+    position: relative;
+    overflow: hidden; /* Обрезает края */
+    border-radius: 16px;
+    margin-bottom: 25px;
+    border: 4px solid #c1966a; /* дерево */
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+}
+
+.recipe-hero {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    display: block;
+    transform: translateY(0);
+    transition: transform 0.2s ease-out;
+}
+/* мобильная адаптация */
+@media (max-width: 900px) {
+    .hero-content { padding: 20px; }
+    .hero-text { padding: 20px; max-width: 100%; }
+    .hero-text h1 { font-size: 28px; }
+    .hero-banner { min-height: 300px; }
+}
+@media (max-width: 420px) {
+    .hero-text h1 { font-size: 22px; }
+    .hero-text .lead { font-size: 14px; }
+    .hero-cta { flex-direction: column; gap: 10px; }
+}
+/* ===========================
+   Hero Light Version
+   =========================== */
+.hero-light {
+    position: relative;
+    width: 100%;
+    min-height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(160deg, #fff7ed, #ffe9d6);
+    border-radius: 12px;
+    margin-bottom: 30px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    overflow: hidden;
+    text-align: center;
+    padding: 20px;
+    color: #5c3a21;
+    font-family: "Inter", sans-serif;
+}
+
+.hero-light img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    margin-bottom: 12px;
+    transition: transform 0.3s ease;
+}
+
+.hero-light img:hover {
+    transform: scale(1.03);
+}
+
+.hero-light h1 {
+    font-size: clamp(24px, 4vw, 36px);
+    margin-bottom: 8px;
+}
+
+.hero-light p {
+    font-size: clamp(14px, 1.6vw, 18px);
+    opacity: 0.9;
+}
+
+/* Адаптив */
+@media (max-width: 768px) {
+    .hero-light { min-height: 200px; padding: 16px; }
+    .hero-light h1 { font-size: 26px; }
+    .hero-light p { font-size: 14px; }
+}
+@media (max-width: 420px) {
+    .hero-light { padding: 12px; }
+    .hero-light h1 { font-size: 20px; }
+    .hero-light p { font-size: 12px; }
+}
+/* =========================================
+   ГЛОБАЛЬНЫЕ ТЕМЫ — ВСЕГДА ПЕРЕКРЫВАЮТ ВСЁ
+========================================= */
+
+/* Светлая тема */
+body.theme-light {
+    --bg-color: #faf7f2;
+    --text-color: #1c1c1c;
+    --block-bg: #ffffff;
+    --accent: #d63f3f;
+    --gradient-1: #fff6e9;
+    --gradient-2: #ffe8c7;
+}
+
+/* Тёмная тема */
+body.theme-dark {
+    --bg-color: #121212;
+    --text-color: #eaeaea;
+    --block-bg: #1d1d1d;
+    --accent: #ff6262;
+    --gradient-1: #1a1a1a;
+    --gradient-2: #2a2a2a;
+}
+
+/* Фон страницы с мягким переходом */
+body {
+    background: linear-gradient(120deg, var(--gradient-1), var(--gradient-2));
+    color: var(--text-color) !important;
+    transition: 0.5s ease;
+}
+
+/* Текстовые блоки */
+.text-block {
+    background: var(--block-bg);
+    color: var(--text-color) !important;
+    border-radius: 16px;
+    padding: 18px 20px;
+    margin-bottom: 22px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    transition: 0.4s ease;
+}
+
+/* Заголовки */
+h1, h2, h3 {
+    color: var(--text-color) !important;
+}
+
+/* Навигация */
+nav a {
+    color: var(--text-color) !important;
+    transition: 0.3s ease;
+}
+
+nav a:hover {
+    color: var(--accent) !important;
+}
+#themeToggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: var(--block-bg);
+    color: var(--text-color);
+    border: 1px solid var(--accent);
+    border-radius: 8px;
+    padding: 8px 14px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    z-index: 999;
+}
+
+#themeToggle:hover {
+    background: var(--accent);
+    color: #fff;
+}
+.hero-about {
+    transition: background 0.6s ease;
+}
+
+/* Анимированное солнце */
+.hero-about::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at center, rgba(255,255,200,0.3) 0%, transparent 60%);
+    animation: sun-glow 6s ease-in-out infinite alternate;
+}
+
+@keyframes sun-glow {
+    0% { transform: scale(0.9) rotate(0deg); opacity: 0.6; }
+    50% { transform: scale(1.1) rotate(15deg); opacity: 0.85; }
+    100% { transform: scale(0.9) rotate(0deg); opacity: 0.6; }
+}
+
+.hero-about .hero-content {
+    transition: color 0.6s ease, border 0.6s ease, backdrop-filter 0.6s ease;
+}
+
+.hero-about .hero-content h1 {
+    font-size: 2.8rem;
+    margin: 0 0 10px 0;
+    line-height: 1.2;
+}
+
+.hero-about .hero-content p {
+    font-size: 1.3rem;
+    margin: 0;
+    line-height: 1.5; /* чтобы буквы не слипались */
+}
+
+/* Смена цвета текста при темах */
+body.theme-light .hero-about .hero-content { color: #fff; }
+body.theme-dark .hero-about .hero-content { color: #FFDDAA; }
+body.theme-orange .hero-about .hero-content { color: #fff; }
+body.theme-gold .hero-about .hero-content { color: #333; }
+body.theme-blue .hero-about .hero-content { color: #F0F8FF; }
+
+/* Адаптивность */
+@media(max-width:768px){
+    .hero-about { height: 180px; }
+    .hero-about .hero-content h1 { font-size: 1.8rem; }
+    .hero-about .hero-content p { font-size: 1rem; }
+}
