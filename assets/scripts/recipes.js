@@ -20,6 +20,7 @@ async function loadRecipes() {
             const card = document.createElement('div');
             card.className = 'recipe-card';
 
+
             card.innerHTML = `
                 <div class="img-wrapper">
                     <img src="assets/${r.image}" alt="${r.title}">
@@ -27,10 +28,7 @@ async function loadRecipes() {
                 <div class="info">
                     <h3>${r.title}</h3>
                     <p>⏱ ${r.time} | ${getDifficultyIcon(r.difficulty)} ${r.difficulty}</p>
-                    <a class="btn" href="recipe.html?id=${r.id}" 
-                    style="background: #ff9c47 !important; color: white !important; padding: 10px 20px !important; border-radius: 8px !important; display: inline-block !important; text-decoration: none !important;">
-                        Перейти
-                    </a>
+                    <a class="btn" href="recipe.html?id=${r.id}">Перейти</a>
                 </div>
             `;
 

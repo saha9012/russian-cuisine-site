@@ -15,6 +15,19 @@
     
 /* ========== ИСПРАВЛЕННЫЕ ЦВЕТА ТЕМ ========== */
 
+/* СВЕТЛАЯ ТЕМА (немного теплее) */
+--bg-light: linear-gradient(160deg, #fef9f3, #f5e9d8);
+--text-light: #4a3520; /* Мягче, чем чёрный */
+--card-light: #fffaf0; /* Было #fff6e8 - стало ярче */
+--accent-light: #d35400; /* ДОБАВЬ ЭТУ СТРОЧКУ! */
+--shadow-light: rgba(0,0,0,0.15); /* ДОБАВЬ ЭТУ СТРОЧКУ! */
+
+/* ТЁМНАЯ ТЕМА (добавим глубины) */
+--bg-dark: linear-gradient(160deg, #0a0a0f, #151520);
+--accent-dark: #9d7aff; /* Более мягкий фиолетовый */
+--card-dark: #1a1a2e; /* Было #181820 - стало насыщеннее */
+--shadow-dark: rgba(0,0,0,0.55); /* ДОБАВЬ ЭТУ СТРОЧКУ! */
+
 /* ОРАНЖЕВАЯ ТЕМА (стала глубже и насыщеннее) */
 --bg-orange: linear-gradient(160deg, #2d1508, #4a2a0d);
 --card-orange: #1c1107;
@@ -22,24 +35,18 @@
 --accent-orange: #ff8c42; /* Менее кислотный */
 --shadow-orange: rgba(0,0,0,0.4);
 
-/* СВЕТЛАЯ ТЕМА (немного теплее) */
---bg-light: linear-gradient(160deg, #fef9f3, #f5e9d8);
---text-light: #4a3520; /* Мягче, чем чёрный */
---card-light: #fffaf0; /* Было #fff6e8 - стало ярче */
-
-/* ТЁМНАЯ ТЕМА (добавим глубины) */
---bg-dark: linear-gradient(160deg, #0a0a0f, #151520);
---accent-dark: #9d7aff; /* Более мягкий фиолетовый */
---card-dark: #1a1a2e; /* Было #181820 - стало насыщеннее */
-
 /* ЗОЛОТАЯ ТЕМА (более благородная) */
 --bg-gold: linear-gradient(160deg, #3a3210, #6b5a1a);
 --accent-gold: #ffcc33;
 --card-gold: #2a240f; /* Было #2f260d */
+--shadow-gold: rgba(0,0,0,0.55); /* ДОБАВЬ ЭТУ СТРОЧКУ! */
 
 /* СИНЯЯ ТЕМА (глубже) */
 --bg-blue: linear-gradient(160deg, #0b1528, #1a2f4d);
 --card-blue: #1a2b3c; /* Было #132335 */
+--accent-blue: #4aa8ff; /* ДОБАВЬ ЭТУ СТРОЧКУ! */
+--shadow-blue: rgba(0,0,0,0.55); /* ДОБАВЬ ЭТУ СТРОЧКУ! */
+--text-blue: #d6eaff; /* ДОБАВЬ ЭТУ СТРОЧКУ! */
 }
 
 /* ============================================
@@ -419,6 +426,9 @@ body.theme-blue .recipe-card:hover::after {
 /* ============================================
    КНОПКИ
    ============================================ */
+/* ============================================
+   КНОПКИ (ИСПРАВЛЕННЫЕ - РАБОТАЮТ В КАРТОЧКАХ)
+   ============================================ */
 .btn {
     display: inline-block;
     padding: 12px 18px;
@@ -433,12 +443,62 @@ body.theme-blue .recipe-card:hover::after {
     cursor: pointer;
 }
 
-body.theme-light .btn { background: var(--accent-light); box-shadow: 0 4px 12px var(--shadow-light); }
-body.theme-dark .btn { background: var(--accent-dark); box-shadow: 0 4px 12px var(--shadow-dark); }
-body.theme-gold .btn { background: var(--accent-gold); box-shadow: 0 4px 12px var(--shadow-gold); }
-body.theme-blue .btn { background: var(--accent-blue); box-shadow: 0 4px 12px var(--shadow-blue); }
+/* ОБЩИЕ КНОПКИ (не в карточках) */
+body.theme-light .btn { 
+    background: var(--accent-light); 
+    box-shadow: 0 4px 12px var(--shadow-light); 
+}
 
-.btn:hover { filter: brightness(1.2) translateY(-2px); }
+body.theme-dark .btn { 
+    background: var(--accent-dark); 
+    box-shadow: 0 4px 12px var(--shadow-dark); 
+}
+
+body.theme-gold .btn { 
+    background: var(--accent-gold); 
+    box-shadow: 0 4px 12px var(--shadow-gold); 
+}
+
+body.theme-blue .btn { 
+    background: var(--accent-blue); 
+    box-shadow: 0 4px 12px var(--shadow-blue); 
+}
+
+/* КНОПКИ ВНУТРИ КАРТОЧЕК (особые правила) */
+body.theme-light .recipe-card .btn {
+    background: var(--accent-light) !important;
+    box-shadow: 0 4px 12px var(--shadow-light) !important;
+    color: white !important;
+}
+
+body.theme-dark .recipe-card .btn {
+    background: var(--accent-dark) !important;
+    box-shadow: 0 4px 12px var(--shadow-dark) !important;
+    color: white !important;
+}
+
+body.theme-orange .recipe-card .btn {
+    background: var(--accent-orange) !important;
+    box-shadow: 0 4px 12px var(--shadow-orange) !important;
+    color: white !important;
+}
+
+body.theme-gold .recipe-card .btn {
+    background: var(--accent-gold) !important;
+    box-shadow: 0 4px 12px var(--shadow-gold) !important;
+    color: #1a1408 !important; /* Тёмный текст на золотом */
+}
+
+body.theme-blue .recipe-card .btn {
+    background: var(--accent-blue) !important;
+    box-shadow: 0 4px 12px var(--shadow-blue) !important;
+    color: white !important;
+}
+
+/* ХОВЕР ДЛЯ ВСЕХ КНОПОК */
+.btn:hover { 
+    filter: brightness(1.2) translateY(-2px); 
+}
 
 .btn-outline {
     background: transparent;
