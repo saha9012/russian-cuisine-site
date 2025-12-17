@@ -1,3 +1,4 @@
+@import url('fonts.googleapis.com');
 /* ============================================
    БАЗА: Сброс, шрифты, переменные
    ============================================ */
@@ -5,13 +6,13 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Inter", sans-serif;
+    font-family: "Montserrat", sans-serif;
 }
 
 :root {
     /* ОСНОВНЫЕ ПЕРЕМЕННЫЕ */
     --transition: 0.35s ease;
-    --font-main: "Inter", sans-serif;
+    --font-main: "Montserrat", sans-serif;
     
 /* ========== ИСПРАВЛЕННЫЕ ЦВЕТА ТЕМ ========== */
 
@@ -260,6 +261,11 @@ body.theme-blue .theme-switch { background: var(--accent-blue); box-shadow: 0 4p
     filter: brightness(1.2);
 }
 
+.text-center {
+    text-align: center;
+    font-size: 36px;
+}
+
 /* ============================================
    КАРТОЧКИ РЕЦЕПТОВ
    ============================================ */
@@ -414,6 +420,8 @@ body.theme-blue .recipe-card:hover::after {
    ТЕКСТОВЫЕ БЛОКИ
    ============================================ */
 .text-block {
+    text-align: justify;
+    font-weight: 500;
     line-height: 1.65;
     font-size: 18px;
     margin-bottom: 30px;
@@ -536,6 +544,8 @@ body.theme-blue .recipe-card .btn {
    ГЕРОЙ ЛЁГКИЙ (для страницы рецепта)
    ============================================ */
 .hero-light {
+    display: flex;
+    flex-direction: column-reverse;
     position: relative;
     width: 100%;
     min-height: 250px;
@@ -558,21 +568,21 @@ body.theme-dark .hero-light {
 }
 
 .hero-light img {
-    max-width: 100%;
-    height: auto;
+    width: 100%;
+    max-height: 75vh;
+    height: 100%;
     border-radius: 10px;
     box-shadow: 0 4px 16px rgba(0,0,0,0.1);
     margin-bottom: 12px;
     transition: transform 0.3s ease;
+    object-fit: cover;
+    object-position: center;
 }
 
-.hero-light img:hover {
-    transform: scale(1.03);
-}
 
 .hero-light h1 {
     font-size: clamp(24px, 4vw, 36px);
-    margin-bottom: 8px;
+    margin-bottom: 20px;
 }
 
 .hero-light p {
@@ -772,11 +782,14 @@ body.theme-blue .recipe-body li { border-left-color: var(--accent-blue); }
 }
 
 .recipe-body ol li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     counter-increment: step-counter;
     margin-bottom: 25px;
     padding-left: 60px;
     position: relative;
-    padding: 20px 20px 20px 80px;
+    padding: 20px;
     background: rgba(255, 255, 255, 0.03);
     border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, 0.08);
@@ -784,9 +797,6 @@ body.theme-blue .recipe-body li { border-left-color: var(--accent-blue); }
 
 .recipe-body ol li::before {
     content: counter(step-counter);
-    position: absolute;
-    left: 20px;
-    top: 20px;
     width: 40px;
     height: 40px;
     background: var(--accent-orange);
@@ -841,10 +851,26 @@ body.theme-blue .recipe-body ol li::before { background: var(--accent-blue); }
    АДАПТИВНОСТЬ
    ============================================ */
 @media (max-width: 768px) {
-    nav { 
-        flex-direction: column; 
-        gap: 15px; 
+    nav {
+        display: grid; 
+        grid-template-columns: 1fr 1fr;
+        gap: 5px; 
         align-items: center; 
+    }
+
+    .theme-switch {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        padding: 3px 5px;
+        border-radius: 8px;
+        background: var(--accent-orange);
+        color: #fff;
+        cursor: pointer;
+        font-weight: bold;
+        z-index: 999;
+        box-shadow: 0 4px 12px var(--shadow-orange);
+        transition: background var(--transition), box-shadow var(--transition);
     }
     
     .recipe-grid { 
