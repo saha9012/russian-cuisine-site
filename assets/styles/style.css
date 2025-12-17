@@ -824,99 +824,8 @@ body.theme-blue .recipe-body ol li::before { background: var(--accent-blue); }
     font-size: 18px;
 }
 
-/* Адаптив для страницы рецепта */
-@media (max-width: 768px) {
-    .recipe-body {
-        padding: 20px;
-    }
-    
-    .recipe-body ul {
-        grid-template-columns: 1fr;
-    }
-    
-    .recipe-body ol li {
-        padding: 15px 15px 15px 70px;
-    }
-    
-    .recipe-body ol li::before {
-        left: 15px;
-        top: 15px;
-        width: 35px;
-        height: 35px;
-        font-size: 16px;
-    }
-}
 
-/* ============================================
-   АДАПТИВНОСТЬ
-   ============================================ */
-@media (max-width: 768px) {
-    nav {
-        display: grid; 
-        grid-template-columns: 1fr 1fr;
-        gap: 5px; 
-        align-items: center; 
-    }
 
-    .theme-switch {
-        position: fixed;
-        top: 10px;
-        right: 10px;
-        padding: 3px 5px;
-        border-radius: 8px;
-        background: var(--accent-orange);
-        color: #fff;
-        cursor: pointer;
-        font-weight: bold;
-        z-index: 999;
-        box-shadow: 0 4px 12px var(--shadow-orange);
-        transition: background var(--transition), box-shadow var(--transition);
-    }
-    
-    .recipe-grid { 
-        grid-template-columns: 1fr; 
-    }
-    
-    .recipe-card img { 
-        height: 220px; 
-    }
-    
-    h1 { 
-        font-size: 28px; 
-    }
-    
-    .hero-about {
-        min-height: 200px;
-    }
-    
-    .hero-about .hero-content {
-        padding: 20px;
-    }
-    
-    .hero-light {
-        min-height: 200px;
-        padding: 16px;
-    }
-}
-
-@media (max-width: 480px) {
-    .container {
-        padding: 0 15px;
-    }
-    
-    .hero-about .hero-content h1 {
-        font-size: 24px;
-    }
-    
-    .hero-light h1 {
-        font-size: 20px;
-    }
-    
-    .text-block {
-        padding: 15px;
-        font-size: 16px;
-    }
-}
 /* ============================================
    СТРАНИЦА ИСТОРИИ (history.html)
    ============================================ */
@@ -1134,7 +1043,34 @@ body.theme-blue .history-quote { border-left-color: var(--accent-blue); }
     opacity: 0.8;
 }
 
-/* Адаптивность для истории */
+
+/* Анимация появления элементов истории */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.timeline-item {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.timeline-item:nth-child(2) { animation-delay: 0.2s; }
+.timeline-item:nth-child(3) { animation-delay: 0.4s; }
+.timeline-item:nth-child(4) { animation-delay: 0.6s; }
+.timeline-item:nth-child(5) { animation-delay: 0.8s; }
+
+
+
+
+
+
+/* Адаптивность для истории /
 @media (max-width: 768px) {
     .history-timeline {
         padding-left: 30px;
@@ -1173,24 +1109,173 @@ body.theme-blue .history-quote { border-left-color: var(--accent-blue); }
         font-size: 1rem;
     }
 }
-
-/* Анимация появления элементов истории */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
+ ============================================
+   АДАПТИВНОСТЬ
+   ============================================ /
+@media (max-width: 768px) {
+    nav {
+        display: grid; 
+        grid-template-columns: 1fr 1fr;
+        gap: 5px; 
+        align-items: center; 
     }
-    to {
-        opacity: 1;
-        transform: translateY(0);
+
+    .theme-switch {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        padding: 3px 5px;
+        border-radius: 8px;
+        background: var(--accent-orange);
+        color: #fff;
+        cursor: pointer;
+        font-weight: bold;
+        z-index: 999;
+        box-shadow: 0 4px 12px var(--shadow-orange);
+        transition: background var(--transition), box-shadow var(--transition);
+    }
+    
+    .recipe-grid { 
+        grid-template-columns: 1fr; 
+    }
+    
+    .recipe-card img { 
+        height: 220px; 
+    }
+    
+    h1 { 
+        font-size: 28px; 
+    }
+    
+    .hero-about {
+        min-height: 200px;
+    }
+    
+    .hero-about .hero-content {
+        padding: 20px;
+    }
+    
+    .hero-light {
+        min-height: 200px;
+        padding: 16px;
     }
 }
 
-.timeline-item {
-    animation: fadeInUp 0.6s ease forwards;
+@media (max-width: 480px) {
+    .container {
+        padding: 0 15px;
+    }
+    
+    .hero-about .hero-content h1 {
+        font-size: 24px;
+    }
+    
+    .hero-light h1 {
+        font-size: 20px;
+    }
+    
+    .text-block {
+        padding: 15px;
+        font-size: 16px;
+    }
+}
+ Адаптив для страницы рецепта /
+@media (max-width: 768px) {
+    .recipe-body {
+        padding: 20px;
+    }
+    
+    .recipe-body ul {
+        grid-template-columns: 1fr;
+    }
+    
+    .recipe-body ol li {
+        padding: 15px 15px 15px 70px;
+    }
+    
+    .recipe-body ol li::before {
+        left: 15px;
+        top: 15px;
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+    }
+}
+*/
+
+/* ТЕЛЕФОНЫ И ПЛАНШЕТЫ */
+@media (max-width: 768px) {
+    /* НАВИГАЦИЯ */
+    nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+    }
+    
+    nav a {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+    
+    /* КНОПКА ТЕМЫ */
+    .theme-switch {
+        top: 10px;
+        right: 10px;
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+    
+    /* КАРТОЧКИ РЕЦЕПТОВ */
+    .recipe-grid { 
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
+    }
+    
+    .recipe-card img { 
+        height: 200px; 
+    }
+    
+    /* ЗАГОЛОВКИ */
+    h1 { font-size: 28px; }
+    h2 { font-size: 24px; }
+    
+    /* ГЕРОЙ БЛОКИ */
+    .hero-about { min-height: 200px; }
+    .hero-about .hero-content { padding: 20px; }
+    .hero-light { min-height: 200px; padding: 16px; }
+    
+    /* СТРАНИЦА ИСТОРИИ - ФОТКИ */
+    .history-gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .history-image {
+        aspect-ratio: 16/9;
+    }
 }
 
-.timeline-item:nth-child(2) { animation-delay: 0.2s; }
-.timeline-item:nth-child(3) { animation-delay: 0.4s; }
-.timeline-item:nth-child(4) { animation-delay: 0.6s; }
-.timeline-item:nth-child(5) { animation-delay: 0.8s; }
+/* МАЛЕНЬКИЕ ТЕЛЕФОНЫ */
+@media (max-width: 480px) {
+    .container { padding: 0 15px; }
+    
+    .recipe-grid { grid-template-columns: 1fr; }
+    
+    .hero-about .hero-content h1 { font-size: 24px; }
+    .hero-light h1 { font-size: 20px; }
+    
+    .text-block { padding: 15px; font-size: 16px; }
+    
+    /* ФОТКИ ИСТОРИИ - 1 В РЯД */
+    .history-gallery { grid-template-columns: 1fr; }
+}
+
+/* ОЧЕНЬ МАЛЕНЬКИЕ ТЕЛЕФОНЫ */
+@media (max-width: 360px) {
+    nav a {
+        padding: 6px 12px;
+        font-size: 13px;
+    }
+    
+    .recipe-card img { height: 180px; }
+    h1 { font-size: 24px; }
+}
