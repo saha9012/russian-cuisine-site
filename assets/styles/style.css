@@ -1190,28 +1190,74 @@ body.theme-blue .history-quote { border-left-color: var(--accent-blue); }
     animation: fadeInUp 0.6s ease forwards;
 }
 
-@media (max-width: 768px) {
-    .history-image {
-        aspect-ratio: 16/9 !important; /* Делаем шире */
-        min-height: 200px !important; /* Минимальная высота */
-    }
-    
-    .history-image img {
-        width: 100% !important;
-        height: 100% !important;
-        object-fit: cover !important;
-        display: block !important;
-    }
-}
 
-@media (max-width: 480px) {
-    .history-image {
-        aspect-ratio: 1/1 !important; /* Квадратные на маленьких экранах */
-        min-height: 250px !important; /* Выше блять! */
-    }
-}
 
 .timeline-item:nth-child(2) { animation-delay: 0.2s; }
 .timeline-item:nth-child(3) { animation-delay: 0.4s; }
 .timeline-item:nth-child(4) { animation-delay: 0.6s; }
 .timeline-item:nth-child(5) { animation-delay: 0.8s; }
+
+/* ============================================
+   ФИКС КАРТИНОК НА ТЕЛЕФОНАХ (100% работает)
+   ============================================ */
+
+/* 1. УБИРАЕМ ВСЮ ХУЙНЮ С ASPECT-RATIO */
+.history-image {
+    aspect-ratio: unset !important;
+    height: auto !important;
+    min-height: 250px !important;
+}
+
+/* 2. КАРТИНКИ ДОЛЖНЫ БЫТЬ ВИДНЫ ВСЕГДА */
+.history-image img {
+    width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    min-height: 200px !important;
+    display: block !important;
+    object-fit: cover !important;
+}
+
+/* 3. ДЛЯ ТЕЛЕФОНОВ ДЕЛАЕМ БОЛЬШЕ */
+@media (max-width: 768px) {
+    .history-image {
+        min-height: 200px !important;
+        margin-bottom: 15px;
+    }
+    
+    .history-image img {
+        min-height: 180px !important;
+    }
+    
+    /* ГАЛЕРЕЯ — ОДНА КАРТИНКА В РЯД */
+    .history-gallery {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+    }
+}
+
+/* 4. УБЕДИСЬ ЧТО КОНТЕЙНЕР НЕ ЛОМАЕТ */
+.container {
+    overflow: visible !important;
+}
+
+/* 5. ЕСЛИ ВСЁ РАВНО ХУЁВО — ЯДРЁНЫЙ ФИКС */
+@media (max-width: 768px) {
+    .history-gallery {
+        display: block !important; /* УБИРАЕМ ГРИД НАХУЙ */
+    }
+    
+    .history-image {
+        display: block !important;
+        width: 100% !important;
+        margin-bottom: 20px !important;
+        float: none !important;
+    }
+    
+    .history-image img {
+        width: 100vw !important;
+        margin-left: -20px !important;
+        margin-right: -20px !important;
+        border-radius: 0 !important;
+    }
+}
